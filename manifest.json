@@ -1,0 +1,25 @@
+{
+  "name": "RK Home Delivery - Ippaipally",
+  "short_name": "RK Delivery",
+  "description": "Order chicken and electronics in Ippaipally Village.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f7f2",
+  "theme_color": "#176b3a",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

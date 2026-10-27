@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#176b3a">
+<meta name="description" content="Order chicken and everyday electronics from RK Home Delivery in Ippaipally Village.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="RK Delivery">
 <title>RK Home Delivery | Ippaipally</title>
 <style>
 :root{--green:#176b3a;--green2:#23874b;--cream:#fff9ed;--ink:#202820;--muted:#647064;--orange:#ffb23f}
@@ -17,7 +24,13 @@ h2{font-size:20px;margin:22px 0 12px}.intro{font-size:14px;color:var(--muted);li
 .products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{background:white;border-radius:16px;padding:14px;box-shadow:0 3px 12px #1425140c;display:flex;flex-direction:column;min-height:170px}.emoji{font-size:34px}.product h3{font-size:15px;margin:8px 0 5px}.product p{font-size:12px;color:var(--muted);margin:0 0 10px;line-height:1.4}.price{font-weight:bold;color:var(--green);margin-top:auto;margin-bottom:10px;font-size:14px}.add{border:0;border-radius:10px;background:var(--green);color:white;padding:10px;font-weight:bold;cursor:pointer}.add:active{transform:scale(.98)}
 .panel{background:white;border-radius:17px;padding:16px;margin-top:18px;box-shadow:0 3px 12px #1425140c}.panel h2{margin:0 0 12px}.cartrow{display:flex;justify-content:space-between;gap:8px;align-items:center;border-bottom:1px solid #edf0eb;padding:10px 0;font-size:14px}.qty{display:flex;align-items:center;gap:8px}.qty button{border:0;background:#e9f3e9;border-radius:8px;width:27px;height:27px;font-weight:bold;cursor:pointer}.empty{color:var(--muted);font-size:14px}.total{font-size:17px;font-weight:bold;display:flex;justify-content:space-between;margin:14px 0}
 label{display:block;font-size:13px;font-weight:bold;margin:12px 0 5px}input,textarea,select{width:100%;padding:12px;border:1px solid #d8dfd6;border-radius:10px;font:inherit;background:#fff}textarea{min-height:75px;resize:vertical}.checkout{width:100%;padding:14px;background:#1c9b55;color:white;border:0;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:14px}.note{font-size:12px;color:var(--muted);line-height:1.5}.call{display:block;text-align:center;margin-top:12px;color:var(--green);font-weight:bold;text-decoration:none}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 12px 35px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 12px 90px}
+.sticky-cart{position:fixed;z-index:50;left:14px;right:14px;bottom:14px;max-width:520px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#176b3a;color:#fff;border:0;border-radius:16px;padding:14px 18px;font-size:15px;font-weight:bold;box-shadow:0 8px 26px #102b1b40;cursor:pointer}
+.sticky-cart small{font-size:12px;font-weight:normal;opacity:.9}
+.install-note{background:#fff8e8;border:1px solid #f1d8a4;border-radius:14px;padding:12px 14px;margin-top:16px;font-size:13px;line-height:1.5;color:#65430b}
+.product .add{min-height:44px}
+button,input,textarea,select{touch-action:manipulation}
+@media(min-width:700px){.sticky-cart{bottom:20px}}
 @media(min-width:650px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}.product{min-height:190px}.categories{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -27,6 +40,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 12px 35p
   <span class="badge">DELIVERY: IPPAIPALLY VILLAGE ONLY</span>
 </div></header>
 <main class="wrap">
+  <div class="install-note">📲 <strong>App లాగా ఉపయోగించండి:</strong> iPhone Safari లో Share → <em>Add to Home Screen</em>. Android Chrome లో ⋮ → <em>Install app</em> / <em>Add to Home screen</em>.</div>
   <h2>ఏం కావాలి? / What do you need?</h2>
   <p class="intro">మీకు కావాల్సిన వస్తువులను ఎంచుకుని కార్ట్‌లో చేర్చండి. ఆర్డర్ WhatsApp ద్వారా షాప్‌కు పంపబడుతుంది.</p>
   <div class="categories">
@@ -58,6 +72,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 12px 35p
   </section>
   <p class="note">ఇది ప్రారంభ వెర్షన్. ఉత్పత్తుల ధరలు, స్టాక్, డెలివరీ అందుబాటు షాప్‌తో నిర్ధారించబడతాయి. WhatsAppలో ఆర్డర్ పంపడానికి మీ ఫోన్‌లో WhatsApp ఉండాలి.</p>
 </main>
+<button class="sticky-cart" type="button" onclick="document.querySelector('#orderForm').scrollIntoView({behavior:'smooth',block:'start'})"><span>🛒 కార్ట్ / Order now<br><small id="stickyCount">0 items selected</small></span><span>Order →</span></button>
 <footer>© RK Home Delivery · Ippaipally Village<br>Powered by local service ❤️</footer>
 <script>
 const WHATSAPP_NUMBER = "916301485904";
@@ -79,8 +94,8 @@ function setFilter(f){filter=f;document.querySelectorAll(".filter").forEach(b=>b
 function renderProducts(){const list=products.filter(p=>filter==="all"||p.category===filter);document.getElementById("products").innerHTML=list.map(p=>`<article class="product"><div class="emoji">${p.emoji}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${p.price===null?"Price on request":rupees(p.price)+(p.unit==="kg"?"/kg":"")}</div><button class="add" onclick="addToCart('${p.id}')">＋ Add to Cart</button></article>`).join("");}
 function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart();}
 function changeQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];renderCart();}
-function renderCart(){const entries=Object.entries(cart);if(!entries.length){document.getElementById("cart").innerHTML='<p class="empty">ఇంకా వస్తువులు ఎంచుకోలేదు.</p>';document.getElementById("total").textContent="₹0";return;}
-let total=0;document.getElementById("cart").innerHTML=entries.map(([id,q])=>{const p=products.find(x=>x.id===id);if(p.price!==null)total+=p.price*q;return `<div class="cartrow"><div><strong>${p.name}</strong><br><small>${p.price===null?"Price to confirm":rupees(p.price)}</small></div><div class="qty"><button type="button" onclick="changeQty('${id}',-1)">−</button><span>${q}</span><button type="button" onclick="changeQty('${id}',1)">＋</button></div></div>`}).join("");document.getElementById("total").textContent=rupees(total)+(entries.some(([id])=>products.find(p=>p.id===id).price===null)?" + price to confirm":"");}
+function renderCart(){const entries=Object.entries(cart);if(!entries.length){document.getElementById("cart").innerHTML='<p class="empty">ఇంకా వస్తువులు ఎంచుకోలేదు.</p>';document.getElementById("total").textContent="₹0";const sc=document.getElementById("stickyCount");if(sc)sc.textContent="0 items selected";return;}
+let total=0;document.getElementById("cart").innerHTML=entries.map(([id,q])=>{const p=products.find(x=>x.id===id);if(p.price!==null)total+=p.price*q;return `<div class="cartrow"><div><strong>${p.name}</strong><br><small>${p.price===null?"Price to confirm":rupees(p.price)}</small></div><div class="qty"><button type="button" onclick="changeQty('${id}',-1)">−</button><span>${q}</span><button type="button" onclick="changeQty('${id}',1)">＋</button></div></div>`}).join("");document.getElementById("total").textContent=rupees(total)+(entries.some(([id])=>products.find(p=>p.id===id).price===null)?" + price to confirm":"");const count=entries.reduce((s,[,q])=>s+q,0);const sc=document.getElementById("stickyCount");if(sc)sc.textContent=`${count} item${count===1?"":"s"} selected`; }
 document.getElementById("orderForm").addEventListener("submit",e=>{e.preventDefault();if(!Object.keys(cart).length){alert("ముందుగా కార్ట్‌లో వస్తువులు చేర్చండి.");return;}
 const name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),address=document.getElementById("address").value.trim(),payment=document.getElementById("payment").value,notes=document.getElementById("instructions").value.trim();
 let lines=Object.entries(cart).map(([id,q])=>{const p=products.find(x=>x.id===id);return `• ${p.name} — Qty: ${q} ${p.unit}${p.price===null?" (price confirm)":", "+rupees(p.price*q)}`;});
@@ -89,5 +104,8 @@ const msg=`🛵 *New Order - RK Home Delivery*\\n\\n👤 Name: ${name}\\n📞 Cu
 window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
 });
 renderProducts();renderCart();
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+}
 </script>
 </body></html>
