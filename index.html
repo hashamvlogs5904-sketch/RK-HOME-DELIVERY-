@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#176b3a">
+<title>RK Home Delivery | Ippaipally</title>
+<style>
+:root{--green:#176b3a;--green2:#23874b;--cream:#fff9ed;--ink:#202820;--muted:#647064;--orange:#ffb23f}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7f2;color:var(--ink)}
+header{background:linear-gradient(135deg,#12532d,#23874b);color:white;padding:22px 16px 25px;border-radius:0 0 24px 24px}
+.wrap{max-width:920px;margin:auto;padding:0 14px}.top{display:flex;align-items:center;gap:12px}.logo{width:58px;height:58px;background:#fff;border-radius:16px;display:grid;place-items:center;font-size:29px}
+h1{font-size:24px;margin:0 0 5px}header p{margin:0;color:#e8f5e9;font-size:14px;line-height:1.5}.badge{display:inline-block;margin-top:15px;background:#fff2d8;color:#65430b;padding:7px 11px;border-radius:20px;font-size:12px;font-weight:bold}
+h2{font-size:20px;margin:22px 0 12px}.intro{font-size:14px;color:var(--muted);line-height:1.5}
+.categories{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.cat{border:0;border-radius:17px;padding:18px 12px;text-align:left;background:white;box-shadow:0 3px 12px #1425140c;cursor:pointer}.cat strong{display:block;font-size:16px;margin-top:8px}.cat span{font-size:28px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.filter{border:1px solid #d5dfd3;background:white;border-radius:20px;padding:9px 13px;cursor:pointer}.filter.active{background:var(--green);color:white;border-color:var(--green)}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{background:white;border-radius:16px;padding:14px;box-shadow:0 3px 12px #1425140c;display:flex;flex-direction:column;min-height:170px}.emoji{font-size:34px}.product h3{font-size:15px;margin:8px 0 5px}.product p{font-size:12px;color:var(--muted);margin:0 0 10px;line-height:1.4}.price{font-weight:bold;color:var(--green);margin-top:auto;margin-bottom:10px;font-size:14px}.add{border:0;border-radius:10px;background:var(--green);color:white;padding:10px;font-weight:bold;cursor:pointer}.add:active{transform:scale(.98)}
+.panel{background:white;border-radius:17px;padding:16px;margin-top:18px;box-shadow:0 3px 12px #1425140c}.panel h2{margin:0 0 12px}.cartrow{display:flex;justify-content:space-between;gap:8px;align-items:center;border-bottom:1px solid #edf0eb;padding:10px 0;font-size:14px}.qty{display:flex;align-items:center;gap:8px}.qty button{border:0;background:#e9f3e9;border-radius:8px;width:27px;height:27px;font-weight:bold;cursor:pointer}.empty{color:var(--muted);font-size:14px}.total{font-size:17px;font-weight:bold;display:flex;justify-content:space-between;margin:14px 0}
+label{display:block;font-size:13px;font-weight:bold;margin:12px 0 5px}input,textarea,select{width:100%;padding:12px;border:1px solid #d8dfd6;border-radius:10px;font:inherit;background:#fff}textarea{min-height:75px;resize:vertical}.checkout{width:100%;padding:14px;background:#1c9b55;color:white;border:0;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:14px}.note{font-size:12px;color:var(--muted);line-height:1.5}.call{display:block;text-align:center;margin-top:12px;color:var(--green);font-weight:bold;text-decoration:none}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 12px 35px}
+@media(min-width:650px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}.product{min-height:190px}.categories{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="top"><div class="logo">🛵</div><div><h1>RK Home Delivery</h1><p>మీ ఊరిలో మీకు కావాల్సినవి — ఇంటి వద్దకే!</p><p>📍 Ippaipally Village</p></div></div>
+  <span class="badge">DELIVERY: IPPAIPALLY VILLAGE ONLY</span>
+</div></header>
+<main class="wrap">
+  <h2>ఏం కావాలి? / What do you need?</h2>
+  <p class="intro">మీకు కావాల్సిన వస్తువులను ఎంచుకుని కార్ట్‌లో చేర్చండి. ఆర్డర్ WhatsApp ద్వారా షాప్‌కు పంపబడుతుంది.</p>
+  <div class="categories">
+    <button class="cat" onclick="setFilter('chicken')"><span>🍗</span><strong>Sneha Chicken Center</strong><small>Chicken & chicken items</small></button>
+    <button class="cat" onclick="setFilter('electronics')"><span>📱</span><strong>RK Electronics</strong><small>Mobile items & daily needs</small></button>
+  </div>
+  <div class="filters">
+    <button class="filter active" id="allBtn" onclick="setFilter('all')">అన్నీ / All</button>
+    <button class="filter" id="chickenBtn" onclick="setFilter('chicken')">🍗 Chicken</button>
+    <button class="filter" id="electronicsBtn" onclick="setFilter('electronics')">📱 Electronics</button>
+  </div>
+  <div class="products" id="products"></div>
+  <section class="panel">
+    <h2>🛒 మీ కార్ట్ / Your Cart</h2><div id="cart"><p class="empty">ఇంకా వస్తువులు ఎంచుకోలేదు.</p></div>
+    <div class="total"><span>Total (priced items)</span><span id="total">₹0</span></div>
+    <p class="note">గమనిక: చికెన్ ధరను ఆర్డర్ కన్ఫర్మ్ చేసే ముందు WhatsAppలో నిర్ధారిస్తాం. డెలివరీ ఛార్జీలు ఉంటే కూడా మీకు ముందుగా తెలియజేస్తాం.</p>
+  </section>
+  <section class="panel">
+    <h2>📦 Delivery Details</h2>
+    <form id="orderForm">
+      <label for="name">మీ పేరు / Name *</label><input id="name" required placeholder="మీ పేరు">
+      <label for="phone">మొబైల్ నంబర్ / Phone *</label><input id="phone" type="tel" required pattern="[0-9+\-\s]{10,15}" placeholder="మీ ఫోన్ నంబర్">
+      <label for="address">ఇంటి అడ్రస్ / Address in Ippaipally *</label><textarea id="address" required placeholder="వీధి, ల్యాండ్‌మార్క్, ఇంటి వివరాలు"></textarea>
+      <label for="payment">Payment Method</label><select id="payment"><option>Cash on Delivery</option><option>UPI (confirm with shop)</option></select>
+      <label for="instructions">గమనిక / Special instructions (optional)</label><textarea id="instructions" placeholder="ఉదా: చికెన్ కటింగ్ వివరాలు"></textarea>
+      <button class="checkout" type="submit">WhatsApp ద్వారా Order పంపండి</button>
+    </form>
+    <a class="call" href="tel:+916301485904">📞 Call Shop: 6301485904</a>
+  </section>
+  <p class="note">ఇది ప్రారంభ వెర్షన్. ఉత్పత్తుల ధరలు, స్టాక్, డెలివరీ అందుబాటు షాప్‌తో నిర్ధారించబడతాయి. WhatsAppలో ఆర్డర్ పంపడానికి మీ ఫోన్‌లో WhatsApp ఉండాలి.</p>
+</main>
+<footer>© RK Home Delivery · Ippaipally Village<br>Powered by local service ❤️</footer>
+<script>
+const WHATSAPP_NUMBER = "916301485904";
+// Add/edit product prices here. Use null when the shop should confirm the price by WhatsApp.
+const products = [
+ {id:"chicken",name:"Chicken",category:"chicken",emoji:"🍗",desc:"Fresh chicken · quantity in kg",price:null,unit:"kg"},
+ {id:"boneless",name:"Boneless Chicken",category:"chicken",emoji:"🍗",desc:"Availability & price confirmed by shop",price:null,unit:"kg"},
+ {id:"leg",name:"Chicken Leg Pieces",category:"chicken",emoji:"🍗",desc:"Availability & price confirmed by shop",price:null,unit:"kg"},
+ {id:"charger",name:"Mobile Charger",category:"electronics",emoji:"🔌",desc:"Choose quantity; model/price confirmed by shop",price:null,unit:"item"},
+ {id:"earphones",name:"Earphones",category:"electronics",emoji:"🎧",desc:"Available models confirmed by shop",price:null,unit:"item"},
+ {id:"remote",name:"TV Remote",category:"electronics",emoji:"📺",desc:"Tell us your TV brand/model in instructions",price:null,unit:"item"},
+ {id:"mobileitems",name:"Mobile Accessories",category:"electronics",emoji:"📱",desc:"Ask about available items",price:null,unit:"item"},
+ {id:"cooldrinks",name:"Cool Drinks",category:"electronics",emoji:"🥤",desc:"Available brands confirmed by shop",price:null,unit:"item"},
+ {id:"icecream",name:"Ice Cream",category:"electronics",emoji:"🍦",desc:"Available flavours confirmed by shop",price:null,unit:"item"}
+];
+let filter="all", cart={};
+const rupees=n=>"₹"+Number(n).toLocaleString("en-IN");
+function setFilter(f){filter=f;document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));document.getElementById(f==="all"?"allBtn":f+"Btn").classList.add("active");renderProducts();document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});}
+function renderProducts(){const list=products.filter(p=>filter==="all"||p.category===filter);document.getElementById("products").innerHTML=list.map(p=>`<article class="product"><div class="emoji">${p.emoji}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${p.price===null?"Price on request":rupees(p.price)+(p.unit==="kg"?"/kg":"")}</div><button class="add" onclick="addToCart('${p.id}')">＋ Add to Cart</button></article>`).join("");}
+function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart();}
+function changeQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];renderCart();}
+function renderCart(){const entries=Object.entries(cart);if(!entries.length){document.getElementById("cart").innerHTML='<p class="empty">ఇంకా వస్తువులు ఎంచుకోలేదు.</p>';document.getElementById("total").textContent="₹0";return;}
+let total=0;document.getElementById("cart").innerHTML=entries.map(([id,q])=>{const p=products.find(x=>x.id===id);if(p.price!==null)total+=p.price*q;return `<div class="cartrow"><div><strong>${p.name}</strong><br><small>${p.price===null?"Price to confirm":rupees(p.price)}</small></div><div class="qty"><button type="button" onclick="changeQty('${id}',-1)">−</button><span>${q}</span><button type="button" onclick="changeQty('${id}',1)">＋</button></div></div>`}).join("");document.getElementById("total").textContent=rupees(total)+(entries.some(([id])=>products.find(p=>p.id===id).price===null)?" + price to confirm":"");}
+document.getElementById("orderForm").addEventListener("submit",e=>{e.preventDefault();if(!Object.keys(cart).length){alert("ముందుగా కార్ట్‌లో వస్తువులు చేర్చండి.");return;}
+const name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),address=document.getElementById("address").value.trim(),payment=document.getElementById("payment").value,notes=document.getElementById("instructions").value.trim();
+let lines=Object.entries(cart).map(([id,q])=>{const p=products.find(x=>x.id===id);return `• ${p.name} — Qty: ${q} ${p.unit}${p.price===null?" (price confirm)":", "+rupees(p.price*q)}`;});
+const total=Object.entries(cart).reduce((s,[id,q])=>{const p=products.find(x=>x.id===id);return s+(p.price===null?0:p.price*q)},0);
+const msg=`🛵 *New Order - RK Home Delivery*\\n\\n👤 Name: ${name}\\n📞 Customer phone: ${phone}\\n📍 Address: ${address}\\n\\n🛒 *Items:*\\n${lines.join("\\n")}\\n\\nSubtotal of priced items: ${rupees(total)}\\nPayment: ${payment}\\nSpecial instructions: ${notes||"None"}\\n\\nPlease confirm availability, final price and delivery charges.`;
+window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
+});
+renderProducts();renderCart();
+</script>
+</body></html>
